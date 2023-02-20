@@ -20,6 +20,9 @@ namespace AM.ApplicationCore.Interfaces
 
         public IEnumerable<Traveller> SeniorTravellers(Flight flight);
 
+        //or IGrouping<string,IEnumerable<Flights>> => requires casting 
+        public IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights();
+
 
     }
 }

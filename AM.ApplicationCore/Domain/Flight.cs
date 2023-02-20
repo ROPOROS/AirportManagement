@@ -21,5 +21,7 @@ namespace AM.ApplicationCore.Domain
         public ICollection<Passanger> Passangers { get; set; }// proproete de navigation
 
         public Plane Plane { get; set; }
+
+        public string Airline { get; set; }
     }
 }

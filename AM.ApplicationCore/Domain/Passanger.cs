@@ -8,6 +8,7 @@ namespace AM.ApplicationCore.Domain
 {
     public class Passanger
     {
+        public int id { get; set; }
         public string PassportNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

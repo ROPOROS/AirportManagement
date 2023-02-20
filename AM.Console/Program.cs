@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AM.ApplicationCore.Domain;
+using AM.ApplicationCore.Services;
 
 Console.WriteLine("");
 //Constructeur par default
@@ -29,8 +30,8 @@ Passanger p1 = new Passanger
 {
     BirthDate = new DateTime(1900 - 04 - 05),
     EmailAdress = "Eren.jaeger@esprit.tn",
-    FirstName="mario",
-    LastName="chachello"
+    FirstName = "mario",
+    LastName = "chachello"
 };
 
 Traveller t1 = new Traveller
@@ -48,3 +49,19 @@ Console.WriteLine(p1.checkProfile("mario", "chachello"));
 p1.PassangerType();
 t1.PassangerType();
 s1.PassangerType();
+
+//test TESTDATA
+
+ServiceFlight sf = new ServiceFlight();
+sf.Flights = TestData.listFlights;
+Console.WriteLine("Test GetFlightDates");
+foreach (var item in sf.GetFlightDates("Paris"))
+{
+    Console.WriteLine(item);
+}
+
+Console.WriteLine("Test ShowFlightDetails");
+//sf.ShowFlightDetails(TestData.BoingPlane);
+
+Console.WriteLine("Grouped");
+sf.DestinationGroupedFlights();

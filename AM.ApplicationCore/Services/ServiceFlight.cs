@@ -13,6 +13,21 @@ namespace AM.ApplicationCore.Services
     {
         public IList<Flight> Flights { get; set; } = new List<Flight>();
 
+        public IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights()
+        {
+            var lambda = Flights.GroupBy(p => p.Destination);
+            foreach (var flight in lambda)
+            {
+                Console.WriteLine("Destionation=" + flight.Key);
+
+                foreach (var item in flight)
+                {
+                    Console.WriteLine("The date is :" + item.FlightDate);
+                }
+            }
+            return lambda;
+        }
+
         public double DurationAverage(string destination)
 
         {
@@ -45,7 +60,7 @@ namespace AM.ApplicationCore.Services
             //return query.ToList();
 
             //lambda
-            return Flights.Where(f => f.Destination == destination).Select(f=> f.FlightDate).ToList();
+            return Flights.Where(f => f.Destination == destination).Select(f => f.FlightDate).ToList();
 
         }
 
@@ -92,14 +107,16 @@ namespace AM.ApplicationCore.Services
             //    }
             //}
             /*var query = from B in Flights where B.Plane == plane*/
-            //var query = from B in plane.Flights select new { B.FlightDate, B.Destination };
+            var query = from flight in Flights where flight.Plane == plane select new { flight.FlightDate, flight.Destination };
             //lambda
-            var query = plane.Flights.Select(B => new { B.FlightDate, B.Destination });
-            foreach (var flight in query)
-            {
-                Console.WriteLine(flight.FlightDate + flight.Destination);
-            }
+            //var query = plane.Flights.Select(B => new { B.FlightDate, B.Destination });
+            //foreach (var flight in query)
+            //{
+            //    Console.WriteLine(flight.FlightDate + flight.Destination);
+            //}
         }
+
+
 
     }
 }
