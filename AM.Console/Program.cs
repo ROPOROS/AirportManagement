@@ -30,22 +30,30 @@ Passanger p1 = new Passanger
 {
     BirthDate = new DateTime(1900 - 04 - 05),
     EmailAdress = "Eren.jaeger@esprit.tn",
-    FirstName = "mario",
-    LastName = "chachello"
+    fullName = new FullName
+    {
+        LastName = "Mario",
+        FirstName = " Marshello "
+    }
 };
 
 Traveller t1 = new Traveller
 {
-    FirstName = "Tony Tony"
-
+    fullName = new FullName
+    {
+        FirstName = " Marshello "
+    }
 };
 
 Staff s1 = new Staff
 {
-    LastName = "Chopper"
+    fullName = new FullName
+    {
+        LastName = "Mario"
+    }
 };
 
-Console.WriteLine(p1.checkProfile("mario", "chachello"));
+Console.WriteLine(p1.checkProfile("mario", "Marshello"));
 p1.PassangerType();
 t1.PassangerType();
 s1.PassangerType();

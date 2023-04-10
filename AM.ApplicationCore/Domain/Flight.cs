@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace AM.ApplicationCore.Domain
 {
     public class Flight
     {
+        
         public int FlightId { get; set; }
         public DateTime FlightDate { get; set; }
         public int EstimatedDuration { get; set; }
@@ -20,6 +22,9 @@ namespace AM.ApplicationCore.Domain
 
         public ICollection<Passanger> Passangers { get; set; }// proproete de navigation
 
+        [ForeignKey("Plane")]
+        public int PlaneFk { get; set; }
+        //[ForeignKey("PlaneFK")]
         public Plane Plane { get; set; }
 
         public string Airline { get; set; }
